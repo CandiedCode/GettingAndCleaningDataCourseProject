@@ -65,3 +65,5 @@ colnames(subsetData) <- gsub("Mag", "Magnitude", names(subsetData))
 #From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 subsetSummary <- aggregate(. ~ subject - activityName, data = subsetData, mean)
 subsetSummary <- tbl_df(arrange(subsetSummary,subject,activityName))
+
+write.table(subsetSummary, "TidyData.txt", row.name=FALSE)
